@@ -1,0 +1,42 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'//kapt3插件
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+    //开启DataBinding
+    dataBinding {
+        enabled true;
+    }
+
+    defaultConfig {
+        applicationId "com.lekusi.databindingdemo"
+        minSdkVersion 14
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+kapt {
+    generateStubs = true
+}
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.databinding:library:1.3.1'
+    compile 'com.android.databinding:baseLibrary:2.3.3'
+    compile 'com.android.databinding:adapters:1.3.1'
+    kapt "com.android.databinding:compiler:$android_plugin_version"
+}
