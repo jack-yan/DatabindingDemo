@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() ,View.OnClickListener{
     val user: User =User(1,"jack",User.Sex.Hidden,10,"13888888","sdddd")
 
-
+    //change the binding text info
     override fun onClick(v: View) {
         if(v.id==R.id.btn_change){
             user.name=et_name.text.toString()
